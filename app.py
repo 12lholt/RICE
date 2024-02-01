@@ -18,6 +18,7 @@ with st.form("price_form"):
     
     # Effort formatting as requested
     st.markdown("Effort")
+    st.markdown("How many people will you need, and for how many months?")
     col1, col2 = st.columns(2)
     with col1:
         headcount = st.number_input("Headcount", min_value=0, format="%d", help="Number of people required.")
