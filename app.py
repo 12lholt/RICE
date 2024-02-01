@@ -17,7 +17,7 @@ with st.form("price_form"):
     confidence = st.slider("Confidence", min_value=0.0, max_value=1.0, value=0.1, step=0.1, format="%.1f", help="Your confidence in the estimates, from 0 (least confident) to 1 (most confident), in tenth increments.")
     
     # Effort formatting as requested
-    st.markdown("### Effort")
+    st.markdown("Effort")
     col1, col2 = st.columns(2)
     with col1:
         headcount = st.number_input("Headcount", min_value=0, format="%d", help="Number of people required.")
