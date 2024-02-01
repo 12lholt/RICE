@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Set page config to apply customizations
-st.set_page_config(page_title="PRICE Scoring App", layout="narrow")
+st.set_page_config(page_title="PRICE Scoring App", layout="centered")
 
 # Title and introduction
 st.title("PRICE Scoring App")
