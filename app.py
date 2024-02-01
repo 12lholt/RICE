@@ -15,9 +15,18 @@ with st.form("price_form"):
     reach = st.number_input("Reach", min_value=0, format="%d", help="The number of people you believe your project will impact during one calendar year.")
     impact = st.number_input("Impact ($)", min_value=0.0, format="%.2f", help="The projected dollar amount of revenue or cost savings during one calendar year.")
     confidence = st.slider("Confidence", min_value=0.0, max_value=1.0, value=0.1, step=0.1, format="%.1f", help="Your confidence in the estimates, from 0 (least confident) to 1 (most confident), in tenth increments.")
-    headcount = st.number_input("Headcount", min_value=0, format="%d", help="Number of people required.")
-    months = st.number_input("Months", min_value=0, format="%d", help="Number of months required.")
+    
+    # Effort formatting as requested
+    st.markdown("Effort")
+    col1, col2 = st.columns(2)
+    with col1:
+        headcount = st.number_input("Headcount", min_value=0, format="%d", help="Number of people required.")
+    with col2:
+        months = st.number_input("Months", min_value=0, format="%d", help="Number of months required.")
+    st.markdown(f"This product or feature will need **{headcount}** headcount for **{months}** months.")
+    
     submit_button = st.form_submit_button(label="Calculate PRICE Score")
+
 
 # Calculate and display the PRICE score
 if submit_button:
