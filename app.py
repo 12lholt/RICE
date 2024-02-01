@@ -25,5 +25,5 @@ if submit_button:
     if effort <= 0:  # Avoid division by zero
         st.error("Effort must be greater than 0!")
     else:
-        price_score = (reach / 100 * impact / 100 * confidence * passion) / effort
+        price_score = ((reach * impact * confidence * passion) / 10000) / effort
         st.metric(label="Your PRICE Score is", value=f"{price_score:.1f}")
