@@ -37,5 +37,5 @@ if submit_button:
         # Adjusted calculation to standardize the score between 0 and 10
         raw_score = (reach * impact * (confidence * 10) * passion) / effort
         # Standardize the score to be between 0 and 10
-        price_score = 10 * (raw_score / (raw_score + 1000000))  # Example standardization formula
+        price_score = 10 * (raw_score / (raw_score + 100))  # Example standardization formula
         st.metric(label="Your PRICE Score is", value=f"{price_score:.1f}")
