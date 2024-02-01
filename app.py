@@ -17,25 +17,23 @@ with st.form("price_form"):
     confidence = st.slider("Confidence", min_value=0.0, max_value=1.0, value=0.1, step=0.1, format="%.1f", help="Your confidence in the estimates, from 0 (least confident) to 1 (most confident), in tenth increments.")
     
     # Effort formatting as requested
-    st.markdown("### Effort")
+    st.markdown("Effort")
     st.markdown("How many people will you need, and for how many months?")
     col1, col2 = st.columns(2)
     with col1:
-        headcount = st.number_input("Headcount", min_value=1, format="%d", help="Number of people required.")  # Ensure headcount is above 0
+        headcount = st.number_input("Headcount", min_value=0, format="%d", help="Number of people required.")
     with col2:
-        months = st.number_input("Months", min_value=1, format="%d", help="Number of months required.")  # Ensure months are above 0
+        months = st.number_input("Months", min_value=0, format="%d", help="Number of months required.")
+    # st.markdown(f"This product or feature will need **{headcount}** headcount for **{months}** months.")
     
     submit_button = st.form_submit_button(label="Calculate PRICE Score")
 
-# Validate input and calculate the PRICE score
+
+# Calculate and display the PRICE score
 if submit_button:
-    # Check if any of the inputs are zero or negative
-    if passion <= 0 or reach <= 0 or impact <= 0 or confidence <= 0 or headcount <= 0 or months <= 0:
-        st.error("All inputs must be greater than 0!")
+    effort = headcount * months  # Calculate effort based on headcount and months
+    if effort <= 0:  # Avoid division by zero
+        st.error("Effort must be greater than 0!")
     else:
-        effort = headcount * months  # Calculate effort based on headcount and months
-        # Adjusted calculation to standardize the score between 0 and 10
-        raw_score = (reach * impact * (confidence * 10) * passion) / effort
-        # Standardize the score to be between 0 and 10
-        price_score = 10 * (raw_score / (raw_score + 100))  # Example standardization formula
+        price_score = ((reach * impact * confidence * passion) / 100000000) / effort
         st.metric(label="Your PRICE Score is", value=f"{price_score:.1f}")
