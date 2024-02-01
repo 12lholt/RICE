@@ -24,7 +24,7 @@ with st.form("price_form"):
         headcount = st.number_input("Headcount", min_value=0, format="%d", help="Number of people required.")
     with col2:
         months = st.number_input("Months", min_value=0, format="%d", help="Number of months required.")
-    st.markdown(f"This product or feature will need **{headcount}** headcount for **{months}** months.")
+    # st.markdown(f"This product or feature will need **{headcount}** headcount for **{months}** months.")
     
     submit_button = st.form_submit_button(label="Calculate PRICE Score")
 
@@ -35,5 +35,5 @@ if submit_button:
     if effort <= 0:  # Avoid division by zero
         st.error("Effort must be greater than 0!")
     else:
-        price_score = ((reach * impact * confidence * passion) / 100000000) / effort
+        price_score = ((reach * impact * confidence * passion) / 10000000000) / effort
         st.metric(label="Your PRICE Score is", value=f"{price_score:.1f}")
